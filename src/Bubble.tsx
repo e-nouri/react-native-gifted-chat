@@ -405,7 +405,7 @@ export default class Bubble<
       currentMessage &&
       user &&
       currentMessage.user &&
-      currentMessage.user._id !== user._id
+      currentMessage.user.id !== user.id
     ) {
       return null
     }
@@ -449,7 +449,7 @@ export default class Bubble<
   renderUsername() {
     const { currentMessage, user } = this.props
     if (this.props.renderUsernameOnMessage && currentMessage) {
-      if (user && currentMessage.user._id === user._id) {
+      if (user && currentMessage.user.id === user.id) {
         return null
       }
       return (
@@ -459,7 +459,7 @@ export default class Bubble<
               [styles.content.username, this.props.usernameStyle] as TextStyle
             }
           >
-            ~ {currentMessage.user.name}
+            ~ {currentMessage.user.fullName}
           </Text>
         </View>
       )

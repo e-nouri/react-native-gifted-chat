@@ -128,7 +128,7 @@ export default class QuickReplies extends Component<
       this.props.onQuickReply(
         replies.map((reply: Reply) => ({
           ...reply,
-          messageId: currentMessage!._id,
+          messageId: currentMessage!.id,
         })),
       )
     }
@@ -137,7 +137,7 @@ export default class QuickReplies extends Component<
   shouldComponentDisplay = () => {
     const { currentMessage, nextMessage } = this.props
     const hasReplies = !!currentMessage && !!currentMessage!.quickReplies
-    const hasNext = !!nextMessage && !!nextMessage!._id
+    const hasNext = !!nextMessage && !!nextMessage!.id
     const keepIt = currentMessage!.quickReplies!.keepIt
 
     if (hasReplies && !hasNext) {

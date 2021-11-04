@@ -38,7 +38,8 @@
     "test:coverage": "TZ=Europe/Paris jest --coverage",
     "prepublishOnly": "yarn lint && yarn build && yarn test && yarn config:npm",
     "postpublish": "yarn config:dev",
-    "prettier": "./node_modules/.bin/prettier --write \"src/**/*.{ts,tsx}\""
+    "prettier": "./node_modules/.bin/prettier --write \"src/**/*.{ts,tsx}\"",
+    "postinstall": "cd node_modules/react-native-gifted-chat && yarn install && yarn lint && yarn build && yarn config:npm && rm -rf node_modules"
   },
   "jest": {
     "preset": "react-native",

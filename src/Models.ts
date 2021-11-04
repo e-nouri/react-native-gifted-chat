@@ -31,9 +31,9 @@ export interface LeftRightStyle<T> {
 }
 type renderFunction = (x: any) => JSX.Element
 export interface User {
-  _id: string | number
-  name?: string
-  avatar?: string | renderFunction
+  id: string | number
+  fullName?: string
+  picture?: string | renderFunction
 }
 
 export interface Reply {
@@ -49,7 +49,7 @@ export interface QuickReplies {
 }
 
 export interface IMessage {
-  _id: string | number
+  id: string | number
   text: string
   createdAt: Date | number
   user: User

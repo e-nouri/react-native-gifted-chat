@@ -150,10 +150,10 @@ export default class Message<
 
     if (
       user &&
-      user._id &&
+      user.id &&
       currentMessage &&
       currentMessage.user &&
-      user._id === currentMessage.user._id &&
+      user.id === currentMessage.user.id &&
       !showUserAvatar
     ) {
       return null
@@ -162,7 +162,7 @@ export default class Message<
     if (
       currentMessage &&
       currentMessage.user &&
-      currentMessage.user.avatar === null
+      currentMessage.user.picture === null
     ) {
       return null
     }

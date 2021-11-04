@@ -75,7 +75,7 @@ export default class GiftedAvatar extends React.Component<GiftedAvatarProps> {
   avatarColor?: string = undefined
 
   setAvatarColor() {
-    const userName = (this.props.user && this.props.user.name) || ''
+    const userName = (this.props.user && this.props.user.fullName) || ''
     const name = userName.toUpperCase().split(' ')
     if (name.length === 1) {
       this.avatarName = `${name[0].charAt(0)}`
@@ -108,19 +108,19 @@ export default class GiftedAvatar extends React.Component<GiftedAvatarProps> {
   renderAvatar() {
     const { user } = this.props
     if (user) {
-      if (typeof user.avatar === 'function') {
-        return user.avatar([styles.avatarStyle, this.props.avatarStyle])
-      } else if (typeof user.avatar === 'string') {
+      if (typeof user.picture === 'function') {
+        return user.picture([styles.avatarStyle, this.props.avatarStyle])
+      } else if (typeof user.picture === 'string') {
         return (
           <Image
-            source={{ uri: user.avatar }}
+            source={{ uri: user.picture }}
             style={[styles.avatarStyle, this.props.avatarStyle]}
           />
         )
-      } else if (typeof user.avatar === 'number') {
+      } else if (typeof user.picture === 'number') {
         return (
           <Image
-            source={user.avatar}
+            source={user.picture}
             style={[styles.avatarStyle, this.props.avatarStyle]}
           />
         )
@@ -149,7 +149,7 @@ export default class GiftedAvatar extends React.Component<GiftedAvatarProps> {
   render() {
     if (
       !this.props.user ||
-      (!this.props.user.name && !this.props.user.avatar)
+      (!this.props.user.fullName && !this.props.user.picture)
     ) {
       // render placeholder
       return (
@@ -163,7 +163,7 @@ export default class GiftedAvatar extends React.Component<GiftedAvatarProps> {
         />
       )
     }
-    if (this.props.user.avatar) {
+    if (this.props.user.picture) {
       return (
         <TouchableOpacity
           disabled={!this.props.onPress}
