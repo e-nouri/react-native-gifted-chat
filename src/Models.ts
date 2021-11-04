@@ -33,7 +33,9 @@ type renderFunction = (x: any) => JSX.Element
 export interface User {
   id: string | number
   fullName?: string
-  picture?: string | renderFunction
+  picture?: string | renderFunction,
+  isOnline: boolean,
+  lastOnlineAt: Date | number
 }
 
 export interface Reply {
