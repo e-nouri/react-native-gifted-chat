@@ -18,8 +18,8 @@ export function isSameDay(
     return false
   }
 
-  const currentCreatedAt = dayjs.unix(currentMessage.createdAt as number)
-  const diffCreatedAt = dayjs.unix(diffMessage.createdAt as number)
+  const currentCreatedAt = dayjs.unix(currentMessage.createdAt as number/1000)
+  const diffCreatedAt = dayjs.unix(diffMessage.createdAt as number/1000)
 
   if (!currentCreatedAt.isValid() || !diffCreatedAt.isValid()) {
     return false

@@ -87,7 +87,8 @@ export default class Day<
         <View style={[styles.container, containerStyle]}>
           <View style={wrapperStyle}>
             <Text style={[styles.text, textStyle]}>
-              {dayjs.unix(currentMessage.createdAt as number)
+              {dayjs
+                .unix(currentMessage.createdAt as number/1000)
                 .locale(this.context.getLocale())
                 .format(dateFormat)}
             </Text>
