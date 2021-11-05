@@ -105,7 +105,7 @@ export default class Time<
               ] as TextStyle
             }
           >
-            {dayjs(currentMessage.createdAt)
+            {dayjs.unix(currentMessage.createdAt as number)
               .locale(this.context.getLocale())
               .format(timeFormat)}
           </Text>
