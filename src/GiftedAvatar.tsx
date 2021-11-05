@@ -11,7 +11,7 @@ import {
   TextStyle,
 } from 'react-native'
 import Color from './Color'
-import { User } from './Models'
+import { Attendee } from './Models'
 import { StylePropType } from './utils'
 
 const {
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
 })
 
 export interface GiftedAvatarProps {
-  user?: User
+  attendee?: Attendee
   avatarStyle?: StyleProp<ImageStyle>
   textStyle?: StyleProp<TextStyle>
   onPress?(props: any): void
@@ -75,7 +75,7 @@ export default class GiftedAvatar extends React.Component<GiftedAvatarProps> {
   avatarColor?: string = undefined
 
   setAvatarColor() {
-    const userName = (this.props.user && this.props.user.fullName) || ''
+    const userName = (this.props.attendee && this.props.attendee.user.fullName) || ''
     const name = userName.toUpperCase().split(' ')
     if (name.length === 1) {
       this.avatarName = `${name[0].charAt(0)}`
@@ -106,21 +106,21 @@ export default class GiftedAvatar extends React.Component<GiftedAvatarProps> {
   }
 
   renderAvatar() {
-    const { user } = this.props
-    if (user) {
-      if (typeof user.picture === 'function') {
-        return user.picture([styles.avatarStyle, this.props.avatarStyle])
-      } else if (typeof user.picture === 'string') {
+    const { attendee } = this.props
+    if (attendee) {
+      if (typeof attendee.user.picture === 'function') {
+        return attendee.user.picture([styles.avatarStyle, this.props.avatarStyle])
+      } else if (typeof attendee.user.picture === 'string') {
         return (
           <Image
-            source={{ uri: user.picture }}
+            source={{ uri: attendee.user.picture }}
             style={[styles.avatarStyle, this.props.avatarStyle]}
           />
         )
-      } else if (typeof user.picture === 'number') {
+      } else if (typeof attendee.user.picture === 'number') {
         return (
           <Image
-            source={user.picture}
+            source={attendee.user.picture}
             style={[styles.avatarStyle, this.props.avatarStyle]}
           />
         )
@@ -148,8 +148,8 @@ export default class GiftedAvatar extends React.Component<GiftedAvatarProps> {
 
   render() {
     if (
-      !this.props.user ||
-      (!this.props.user.fullName && !this.props.user.picture)
+      !this.props.attendee ||
+      (!this.props.attendee.user.fullName && !this.props.attendee.user.picture)
     ) {
       // render placeholder
       return (
@@ -163,7 +163,7 @@ export default class GiftedAvatar extends React.Component<GiftedAvatarProps> {
         />
       )
     }
-    if (this.props.user.picture) {
+    if (this.props.attendee.user.picture) {
       return (
         <TouchableOpacity
           disabled={!this.props.onPress}

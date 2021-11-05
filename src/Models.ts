@@ -30,12 +30,23 @@ export interface LeftRightStyle<T> {
   right: StyleProp<T>
 }
 type renderFunction = (x: any) => JSX.Element
-export interface User {
+export interface Attendee {
   id: string | number
-  fullName?: string
-  picture?: string | renderFunction
-  isOnline?: boolean
-  lastOnlineAt?: Date | number
+  lastAction?: string;
+  requestedtoJoinAt?: number;
+  confirmed?: boolean;
+  isHost?: boolean;
+  wasPresent?: boolean;
+  isInvited?: boolean;
+  isModerator?: boolean;
+  user:{
+    id: string | number
+    fullName?: string
+    picture?: string | renderFunction
+    isOnline?: boolean
+    lastOnlineAt?: Date | number
+  }
+
 }
 
 export interface Reply {
@@ -54,7 +65,7 @@ export interface IMessage {
   id: string | number
   text: string
   createdAt: Date | number
-  user: User
+  attendee: Attendee
   image?: string
   video?: string
   audio?: string

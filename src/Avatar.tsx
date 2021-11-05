@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 import GiftedAvatar from './GiftedAvatar'
 import { StylePropType, isSameUser, isSameDay } from './utils'
-import { Omit, IMessage, User, LeftRightStyle } from './Models'
+import { Omit, IMessage, Attendee, LeftRightStyle } from './Models'
 
 const styles = {
   left: StyleSheet.create({
@@ -53,8 +53,8 @@ export interface AvatarProps<TMessage extends IMessage> {
   containerStyle?: LeftRightStyle<ViewStyle>
   textStyle?: TextStyle
   renderAvatar?(props: Omit<AvatarProps<TMessage>, 'renderAvatar'>): ReactNode
-  onPressAvatar?(user: User): void
-  onLongPressAvatar?(user: User): void
+  onPressAvatar?(user: Attendee): void
+  onLongPressAvatar?(user: Attendee): void
 }
 
 export default class Avatar<
@@ -111,14 +111,14 @@ export default class Avatar<
             ] as ImageStyle
           }
           textStyle={this.props.textStyle ? this.props.textStyle : {}}
-          user={this.props.currentMessage.user}
+          user={this.props.currentMessage.attendee}
           onPress={() =>
             this.props.onPressAvatar &&
-            this.props.onPressAvatar(this.props.currentMessage!.user)
+            this.props.onPressAvatar(this.props.currentMessage!.attendee)
           }
           onLongPress={() =>
             this.props.onLongPressAvatar &&
-            this.props.onLongPressAvatar(this.props.currentMessage!.user)
+            this.props.onLongPressAvatar(this.props.currentMessage!.attendee)
           }
         />
       )

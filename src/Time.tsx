@@ -106,7 +106,7 @@ export default class Time<
             }
           >
             {dayjs
-              .unix(currentMessage.createdAt as number/1000)
+              .unix((currentMessage.createdAt as number) / 1000)
               .locale(this.context.getLocale())
               .format(timeFormat)}
           </Text>

@@ -23,7 +23,7 @@ import Color from './Color'
 
 import { StylePropType, isSameUser, isSameDay } from './utils'
 import {
-  User,
+  Attendee,
   IMessage,
   LeftRightStyle,
   Reply,
@@ -130,7 +130,7 @@ export type RenderMessageTextProps<TMessage extends IMessage> = Omit<
   MessageText['props']
 
 export interface BubbleProps<TMessage extends IMessage> {
-  user?: User
+  user?: Attendee
   touchableProps?: object
   renderUsernameOnMessage?: boolean
   isCustomViewBottom?: boolean
@@ -404,8 +404,8 @@ export default class Bubble<
     if (
       currentMessage &&
       user &&
-      currentMessage.user &&
-      currentMessage.user.id !== user.id
+      currentMessage.attendee &&
+      currentMessage.attendee.id !== user.id
     ) {
       return null
     }
@@ -449,7 +449,7 @@ export default class Bubble<
   renderUsername() {
     const { currentMessage, user } = this.props
     if (this.props.renderUsernameOnMessage && currentMessage) {
-      if (user && currentMessage.user.id === user.id) {
+      if (user && currentMessage.attendee.id === user.id) {
         return null
       }
       return (
@@ -459,7 +459,7 @@ export default class Bubble<
               [styles.content.username, this.props.usernameStyle] as TextStyle
             }
           >
-            ~ {currentMessage.user.fullName}
+            ~ {currentMessage.attendee.user.fullName}
           </Text>
         </View>
       )

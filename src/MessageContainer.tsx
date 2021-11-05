@@ -20,7 +20,7 @@ import {
 import LoadEarlier from './LoadEarlier'
 import Message from './Message'
 import Color from './Color'
-import { User, IMessage, Reply } from './Models'
+import { Attendee, IMessage, Reply } from './Models'
 import { warning, StylePropType } from './utils'
 import TypingIndicator from './TypingIndicator'
 
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
 export interface MessageContainerProps<TMessage extends IMessage> {
   messages?: TMessage[]
   isTyping?: boolean
-  user?: User
+  user?: Attendee
   listViewProps: Partial<ListViewProps>
   inverted?: boolean
   loadEarlier?: boolean
@@ -283,14 +283,14 @@ export default class MessageContainer<
     if (!item.id && item.id !== 0) {
       warning('GiftedChat: `_id` is missing for message', JSON.stringify(item))
     }
-    if (!item.user) {
+    if (!item.attendee) {
       if (!item.system) {
         warning(
           'GiftedChat: `user` is missing for message',
           JSON.stringify(item),
         )
       }
-      item.user = { id: 0 }
+      item.attendee = { id: 0, user:{id:0} }
     }
     const { messages, user, inverted, ...restProps } = this.props
     if (messages && user) {
@@ -307,7 +307,7 @@ export default class MessageContainer<
         previousMessage,
         inverted,
         nextMessage,
-        position: item.user.id === user.id ? 'right' : 'left',
+        position: item.attendee.id === user.id ? 'right' : 'left',
       }
 
       if (this.props.renderMessage) {

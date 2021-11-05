@@ -8,7 +8,7 @@ import SystemMessage from './SystemMessage'
 import Day from './Day'
 
 import { StylePropType, isSameUser } from './utils'
-import { IMessage, User, LeftRightStyle } from './Models'
+import { IMessage, Attendee, LeftRightStyle } from './Models'
 
 const styles = {
   left: StyleSheet.create({
@@ -38,7 +38,7 @@ export interface MessageProps<TMessage extends IMessage> {
   currentMessage?: TMessage
   nextMessage?: TMessage
   previousMessage?: TMessage
-  user: User
+  user: Attendee
   inverted?: boolean
   containerStyle?: LeftRightStyle<ViewStyle>
   renderBubble?(props: Bubble['props']): React.ReactNode
@@ -152,8 +152,8 @@ export default class Message<
       user &&
       user.id &&
       currentMessage &&
-      currentMessage.user &&
-      user.id === currentMessage.user.id &&
+      currentMessage.attendee &&
+      user.id === currentMessage.attendee.id &&
       !showUserAvatar
     ) {
       return null
@@ -161,8 +161,8 @@ export default class Message<
 
     if (
       currentMessage &&
-      currentMessage.user &&
-      currentMessage.user.picture === null
+      currentMessage.attendee &&
+      currentMessage.attendee.user.picture === null
     ) {
       return null
     }
