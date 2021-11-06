@@ -75,7 +75,8 @@ export default class GiftedAvatar extends React.Component<GiftedAvatarProps> {
   avatarColor?: string = undefined
 
   setAvatarColor() {
-    const userName = (this.props.attendee && this.props.attendee.user.fullName) || ''
+    const userName =
+      (this.props.attendee && this.props.attendee.user.fullName) || ''
     const name = userName.toUpperCase().split(' ')
     if (name.length === 1) {
       this.avatarName = `${name[0].charAt(0)}`
@@ -109,7 +110,10 @@ export default class GiftedAvatar extends React.Component<GiftedAvatarProps> {
     const { attendee } = this.props
     if (attendee) {
       if (typeof attendee.user.picture === 'function') {
-        return attendee.user.picture([styles.avatarStyle, this.props.avatarStyle])
+        return attendee.user.picture([
+          styles.avatarStyle,
+          this.props.avatarStyle,
+        ])
       } else if (typeof attendee.user.picture === 'string') {
         return (
           <Image

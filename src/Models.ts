@@ -32,21 +32,27 @@ export interface LeftRightStyle<T> {
 type renderFunction = (x: any) => JSX.Element
 export interface Attendee {
   id: string | number
-  lastAction?: string;
-  requestedtoJoinAt?: number;
-  confirmed?: boolean;
-  isHost?: boolean;
-  wasPresent?: boolean;
-  isInvited?: boolean;
-  isModerator?: boolean;
-  user:{
+  lastAction?: string
+  requestedtoJoinAt?: number
+  confirmed?: boolean
+  isHost?: boolean
+  wasPresent?: boolean
+  isInvited?: boolean
+  isModerator?: boolean
+  inviter?:{
     id: string | number
     fullName?: string
     picture?: string | renderFunction
     isOnline?: boolean
     lastOnlineAt?: Date | number
   }
-
+  user: {
+    id: string | number
+    fullName?: string
+    picture?: string | renderFunction
+    isOnline?: boolean
+    lastOnlineAt?: Date | number
+  }
 }
 
 export interface Reply {

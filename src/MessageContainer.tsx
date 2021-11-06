@@ -290,7 +290,7 @@ export default class MessageContainer<
           JSON.stringify(item),
         )
       }
-      item.attendee = { id: 0, user:{id:0} }
+      item.attendee = { id: 0, user: { id: 0 } }
     }
     const { messages, user, inverted, ...restProps } = this.props
     if (messages && user) {
