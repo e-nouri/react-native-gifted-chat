@@ -284,7 +284,7 @@ export default class MessageContainer<
       warning('GiftedChat: `_id` is missing for message', JSON.stringify(item))
     }
     if (!item.attendee) {
-      if (!item.system) {
+      if (!item.sys) {
         warning(
           'GiftedChat: `user` is missing for message',
           JSON.stringify(item),

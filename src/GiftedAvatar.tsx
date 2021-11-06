@@ -54,10 +54,10 @@ export interface GiftedAvatarProps {
 export default class GiftedAvatar extends React.Component<GiftedAvatarProps> {
   static defaultProps = {
     attendee: {
-      user:{
+      user: {
         fullName: null,
         picture: null,
-      }
+      },
     },
     onPress: undefined,
     onLongPress: undefined,

@@ -75,7 +75,7 @@ export interface IMessage {
   image?: string
   video?: string
   audio?: string
-  system?: boolean
+  sys?: boolean
   sent?: boolean
   received?: boolean
   pending?: boolean

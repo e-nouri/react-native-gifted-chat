@@ -178,7 +178,7 @@ export default class Message<
       return (
         <View>
           {this.renderDay()}
-          {currentMessage.system ? (
+          {currentMessage.sys ? (
             this.renderSystemMessage()
           ) : (
             <View
