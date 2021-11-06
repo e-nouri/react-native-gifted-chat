@@ -38,7 +38,7 @@ export interface MessageProps<TMessage extends IMessage> {
   currentMessage?: TMessage
   nextMessage?: TMessage
   previousMessage?: TMessage
-  user: Attendee
+  attendee: Attendee
   inverted?: boolean
   containerStyle?: LeftRightStyle<ViewStyle>
   renderBubble?(props: Bubble['props']): React.ReactNode
@@ -146,14 +146,14 @@ export default class Message<
   }
 
   renderAvatar() {
-    const { user, currentMessage, showUserAvatar } = this.props
+    const { attendee, currentMessage, showUserAvatar } = this.props
 
     if (
-      user &&
-      user.id &&
+      attendee &&
+      attendee.id &&
       currentMessage &&
       currentMessage.attendee &&
-      user.id === currentMessage.attendee.id &&
+      attendee.id === currentMessage.attendee.id &&
       !showUserAvatar
     ) {
       return null

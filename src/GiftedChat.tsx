@@ -73,7 +73,7 @@ export interface GiftedChatProps<TMessage extends IMessage = IMessage> {
   /* Makes the composer not editable*/
   disableComposer?: boolean
   /* User sending the messages: { _id, name, avatar } */
-  user?: Attendee
+  attendee?: Attendee
   /*  Locale to localize the dates */
   locale?: string
   /* Format to use for rendering times; default is 'LT' */
@@ -231,7 +231,7 @@ class GiftedChat<TMessage extends IMessage = IMessage> extends React.Component<
     placeholder: DEFAULT_PLACEHOLDER,
     disableComposer: false,
     messageIdGenerator: () => uuid.v4(),
-    user: {},
+    attendee: {},
     onSend: () => {},
     locale: null,
     timeFormat: TIME_FORMAT,
@@ -681,7 +681,7 @@ class GiftedChat<TMessage extends IMessage = IMessage> extends React.Component<
     const newMessages: TMessage[] = messages.map(message => {
       return {
         ...message,
-        attendee: this.props.user!,
+        attendee: this.props.attendee!,
         createdAt: new Date(),
         id: this.props.messageIdGenerator && this.props.messageIdGenerator(),
       }

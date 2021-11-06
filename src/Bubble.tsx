@@ -130,7 +130,7 @@ export type RenderMessageTextProps<TMessage extends IMessage> = Omit<
   MessageText['props']
 
 export interface BubbleProps<TMessage extends IMessage> {
-  user?: Attendee
+  attendee?: Attendee
   touchableProps?: object
   renderUsernameOnMessage?: boolean
   isCustomViewBottom?: boolean
@@ -397,15 +397,15 @@ export default class Bubble<
   }
 
   renderTicks() {
-    const { currentMessage, renderTicks, user } = this.props
+    const { currentMessage, renderTicks, attendee } = this.props
     if (renderTicks && currentMessage) {
       return renderTicks(currentMessage)
     }
     if (
       currentMessage &&
-      user &&
+      attendee &&
       currentMessage.attendee &&
-      currentMessage.attendee.id !== user.id
+      currentMessage.attendee.id !== attendee.id
     ) {
       return null
     }
@@ -447,9 +447,9 @@ export default class Bubble<
   }
 
   renderUsername() {
-    const { currentMessage, user } = this.props
+    const { currentMessage, attendee } = this.props
     if (this.props.renderUsernameOnMessage && currentMessage) {
-      if (user && currentMessage.attendee.id === user.id) {
+      if (attendee && currentMessage.attendee.id === attendee.id) {
         return null
       }
       return (

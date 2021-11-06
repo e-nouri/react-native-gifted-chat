@@ -39,7 +39,7 @@ export interface Attendee {
   wasPresent?: boolean
   isInvited?: boolean
   isModerator?: boolean
-  inviter?:{
+  inviter?: {
     id: string | number
     fullName?: string
     picture?: string | renderFunction

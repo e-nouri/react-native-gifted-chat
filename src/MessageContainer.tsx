@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
 export interface MessageContainerProps<TMessage extends IMessage> {
   messages?: TMessage[]
   isTyping?: boolean
-  user?: Attendee
+  attendee?: Attendee
   listViewProps: Partial<ListViewProps>
   inverted?: boolean
   loadEarlier?: boolean
@@ -292,8 +292,8 @@ export default class MessageContainer<
       }
       item.attendee = { id: 0, user: { id: 0 } }
     }
-    const { messages, user, inverted, ...restProps } = this.props
-    if (messages && user) {
+    const { messages, attendee, inverted, ...restProps } = this.props
+    if (messages && attendee) {
       const previousMessage =
         (inverted ? messages[index + 1] : messages[index - 1]) || {}
       const nextMessage =
@@ -301,13 +301,13 @@ export default class MessageContainer<
 
       const messageProps: Message['props'] = {
         ...restProps,
-        user,
+        attendee,
         key: item.id,
         currentMessage: item,
         previousMessage,
         inverted,
         nextMessage,
-        position: item.attendee.id === user.id ? 'right' : 'left',
+        position: item.attendee.id === attendee.id ? 'right' : 'left',
       }
 
       if (this.props.renderMessage) {
