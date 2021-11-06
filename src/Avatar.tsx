@@ -111,7 +111,7 @@ export default class Avatar<
             ] as ImageStyle
           }
           textStyle={this.props.textStyle ? this.props.textStyle : {}}
-          user={this.props.currentMessage.attendee}
+          attendee={this.props.currentMessage.attendee}
           onPress={() =>
             this.props.onPressAvatar &&
             this.props.onPressAvatar(this.props.currentMessage!.attendee)

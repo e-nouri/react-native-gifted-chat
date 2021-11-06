@@ -53,9 +53,11 @@ export interface GiftedAvatarProps {
 
 export default class GiftedAvatar extends React.Component<GiftedAvatarProps> {
   static defaultProps = {
-    user: {
-      name: null,
-      avatar: null,
+    attendee: {
+      user:{
+        fullName: null,
+        picture: null,
+      }
     },
     onPress: undefined,
     onLongPress: undefined,
@@ -64,7 +66,7 @@ export default class GiftedAvatar extends React.Component<GiftedAvatarProps> {
   }
 
   static propTypes = {
-    user: PropTypes.object,
+    attendee: PropTypes.object,
     onPress: PropTypes.func,
     onLongPress: PropTypes.func,
     avatarStyle: StylePropType,
