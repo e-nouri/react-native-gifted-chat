@@ -307,7 +307,8 @@ export default class MessageContainer<
         previousMessage,
         inverted,
         nextMessage,
-        position: item.attendee && item.attendee.id === attendee.id ? 'right' : 'left',
+        position:
+          item.attendee && item.attendee.id === attendee.id ? 'right' : 'left',
       }
 
       if (this.props.renderMessage) {
