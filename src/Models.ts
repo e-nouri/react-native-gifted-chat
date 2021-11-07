@@ -43,7 +43,7 @@ export interface Attendee {
     id: string | number
     fullName?: string
     picture?: string | renderFunction
-    userName?:string
+    userName?: string
     isOnline?: boolean
     lastOnlineAt?: Date | number
   }
@@ -51,7 +51,7 @@ export interface Attendee {
     id: string | number
     fullName?: string
     picture?: string | renderFunction
-    userName?:string
+    userName?: string
     isOnline?: boolean
     lastOnlineAt?: Date | number
   }

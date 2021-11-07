@@ -459,7 +459,9 @@ export default class Bubble<
               [styles.content.username, this.props.usernameStyle] as TextStyle
             }
           >
-            ~ {currentMessage.attendee.user.userName ? `@${currentMessage.attendee.user.userName}` : currentMessage.attendee.user.fullName}
+            {currentMessage.attendee.user.userName
+              ? `@${currentMessage.attendee.user.userName}`
+              : `~ ${currentMessage.attendee.user.fullName}`}
           </Text>
         </View>
       )
